@@ -16,80 +16,79 @@ interface Inputs {
 }
 
 function App() {
-  const [cars, setCars] = useState([]);
-  const [filter, setFilter] = useState<Filter>({
+	const [cars, setCars] = useState<Car[]>([]);
+	const [filter, setFilter] = useState<Filter>({
 		minPrice: 0,
 		maxPrice: 100000000,
-  });
-  const { handleSubmit, control, reset, register } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+	});
+	const { handleSubmit, control, register } = useForm<Inputs>();
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
 		setFilter({ minPrice: data.minPrice, maxPrice: data.maxPrice });
 		console.log(data);
-  };
+	};
 
-  const filteredCars = useMemo(
+	const filteredCars = useMemo(
 		() =>
 			cars.filter(
-				(item: Car) =>
+				(item) =>
 					item.price < filter?.maxPrice &&
 					item.price > filter?.minPrice
 			),
-		[filter]
-  );
+		[filter, cars]
+	);
 
 	useEffect(() => {
+		const res = axios
+			.get('/user')
+			.then((res) => res.data)
+			.catch((e) => e);
 
-    const res = axios
-		.get('/user')
-		.then((res) => (res.data))
-		.catch((e) => e);
-
-    (async () => {
-      const response = await res;
-      console.log(response);
-      setCars(response);
-    })();
+		(async () => {
+			const response = await res;
+			console.log(response);
+			setCars(response);
+		})();
 	}, []);
 	return (
-		<div className='flex gap-10'>
-			<form
-				onSubmit={handleSubmit(onSubmit)}
-				className='flex flex-col min-w-80'>
-				<Controller
-					name='minPrice'
-					control={control}
-					rules={{ required: true }}
-					render={({ field }) => (
-						<input
-							{...field}
-							{...register('minPrice', {
-								pattern: /^[1-9][0-9]*$/,
-							})}
-							className='h-8 w-[100%] bg-stone-100 text-black outline-none'
-						/>
-					)}
-				/>
-				<Controller
-					name='maxPrice'
-					control={control}
-					rules={{ required: true }}
-					render={({ field }) => (
-						<input
-							{...field}
-							{...register('maxPrice', {
-								pattern: /^[1-9][0-9]*$/,
-							})}
-							className='h-8 w-[100%] bg-stone-100 text-black outline-none'
-						/>
-					)}
-				/>
-				<button type='submit' className='text-black'>
+		<div className='container'>
+			<form onSubmit={handleSubmit(onSubmit)} className='filter-form'>
+				<div className='price-fields'>
+					<Controller
+						name='minPrice'
+						control={control}
+						rules={{ required: true }}
+						render={({ field }) => (
+							<input
+								{...field}
+								{...register('minPrice', {
+									pattern: /^[1-9][0-9]*$/,
+								})}
+								className='price-filter'
+							/>
+						)}
+					/>
+					<Controller
+						name='maxPrice'
+						control={control}
+						rules={{ required: true }}
+						render={({ field }) => (
+							<input
+								{...field}
+								{...register('maxPrice', {
+									pattern: /^[1-9][0-9]*$/,
+								})}
+								className='price-filter'
+							/>
+						)}
+					/>
+				</div>
+				<button type='submit' className='apply-filter'>
 					Apply filter
 				</button>
 			</form>
-			<div className='flex max-w-[1000px] w-[100%] flex-col p-10 bg-stone-100 text-slate-950'>
+			<div className='products'>
 				{filteredCars.map((item, i) => (
-					<div key={i} className='border-b border-stone-300'>
+					<div key={i} className='product'>
 						<ProductCard data={item} />
 					</div>
 				))}

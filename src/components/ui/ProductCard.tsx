@@ -10,11 +10,11 @@ export interface Car {
 }
 const ProductCard = ({ data }: Props) => {
 	return (
-		<div className='p-4'>
-			<div className='grid grid-cols-[1.5fr,3fr,1fr] gap-6'>
-				<div className='max-w-[260px]'>
+		<div className='product-card'>
+			<div className='card-content'>
+				<div className='card-image-container'>
 					<img
-						className='rounded '
+						className='card-image'
 						src={data.image}
 						alt=''
 					/>
