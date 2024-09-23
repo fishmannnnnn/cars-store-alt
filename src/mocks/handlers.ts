@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
 export const handlers = [
-    http.get('/user', () => {
+    http.get('https://www.everyapi.com/cars', () => {
         return HttpResponse.json(
             [
                 {
