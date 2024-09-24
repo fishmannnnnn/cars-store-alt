@@ -1,3 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  padding: 20px;
+}
 .container{
   display: flex;
   gap: 20px;
@@ -13,7 +20,7 @@
 }
 .price-fields{
   display: flex;
-  gap: 10px;
+  gap: 4px;
   justify-content: space-between;
 }
 .price-filter{
@@ -73,9 +80,19 @@
   width: 100%;
   height: 100%;
 }
-.product-card__model{
+.product-card__car-data-model{
   font-size: 1.25rem;
+  font-weight: 300;
 }
 .product-card__price{
   text-align: end;
+}
+.product-card__car-data-characteristics{
+  margin-top: 12px;
+}
+.car-data-characteristics__characteritics-item{
+  font-weight: 300;
+}
+.car-data-characteristics__characteritics-item span{
+  font-weight: 500;
 }

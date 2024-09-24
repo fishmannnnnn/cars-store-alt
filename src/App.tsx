@@ -58,6 +58,7 @@ function App() {
 		<SkeletonTheme>
 			<div className='container'>
 				<form onSubmit={handleSubmit(onSubmit)} className='filter-form'>
+					<p>Price range</p>
 					<div className='price-fields'>
 						<Controller
 							name='minPrice'
@@ -73,6 +74,7 @@ function App() {
 								/>
 							)}
 						/>
+						-
 						<Controller
 							name='maxPrice'
 							control={control}
@@ -94,8 +96,8 @@ function App() {
 				</form>
 				<div className='products'>
 					{
-					isLoading && filteredCars ? (
-						arr.map((item, i) => (
+					isLoading ? (
+						arr.map((_, i) => (
 							<div key={i} className='product'>
 								<SkeletonProductCard />
 							</div>
