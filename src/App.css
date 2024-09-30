@@ -12,7 +12,7 @@ body{
   max-width: 1160px;
   margin: 0 auto;
 }
-.filter-form{
+.filter-form, form{
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -32,6 +32,7 @@ body{
   color: black;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 4px;
+  padding: 6px 8px;
 }
 .apply-filter{
   padding: .5rem;

@@ -4,10 +4,11 @@
 		{ "path": "./tsconfig.app.json" },
 		{ "path": "./tsconfig.node.json" }
 	],
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"],
-      "@/assets/*": ["./src/assets/*"]
-    }
-  },
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@/assets/*": ["./src/assets/*"]
+		}
+	}
 }
