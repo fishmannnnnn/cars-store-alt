@@ -37,8 +37,8 @@ const ProductCard = ({ data }: Props) => {
 							<span>{data.characteristics.exteriorColor}</span>
 						</div>
 						<div className='car-data-characteristics__characteritics-item'>
-							Drive Line:{' '}
-							<span>{data.characteristics.driveLine}</span>
+							Transmission:{' '}
+							<span>{data.characteristics.transmission}</span>
 						</div>
 						<div className='car-data-characteristics__characteritics-item'>
 							Fuel Type:{' '}

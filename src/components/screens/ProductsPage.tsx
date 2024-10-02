@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-import ProductCard from '@/components/ui/ProductCard';
-import SkeletonProductCard, { arr } from '@/components/ui/SkeletonProductCard';
+import ProductCard, { Car } from '../ui/ProductCard';
+import SkeletonProductCard, { arr } from '../ui/SkeletonProductCard';
 import { useMemo, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import axios from 'axios';
-import { Car } from '@/components/ui/ProductCard';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -12,7 +11,7 @@ interface Filter {
 	minPrice: number;
 	maxPrice: number;
 }
-const filterResetValue = {
+const filterResetValue: Filter = {
 	minPrice: 0,
 	maxPrice: 100000000,
 };
@@ -35,19 +34,40 @@ function ProductsPage() {
 			),
 		[filter, cars]
 	);
+
 	const resetFilter = () => {
 		setFilter(filterResetValue);
 	};
+
+	const uniqueCheckboxProps = useMemo(() => {
+		const unique = {
+			bodies: Array.from(
+				new Set(cars.map((car) => car.characteristics.body))
+			),
+			colors: Array.from(
+				new Set(cars.map((car) => car.characteristics.exteriorColor))
+			),
+			transmissions: Array.from(
+				new Set(cars.map((car) => car.characteristics.transmission))
+			),
+			fuelTypes: Array.from(
+				new Set(cars.map((car) => car.characteristics.fuelType))
+			),
+		};
+		return unique;
+	}, [cars]);
+
 	useEffect(() => {
 		axios
-			.get('https://www.everyapi.com/cars')
+			.get('/cars')
 			.then((res) => res.data)
-			.then((cars) => {
-				setCars(cars);
+			.then((data) => {
+				setCars(data);
 				setTimeout(() => {
-					console.log(cars);
+					console.log(data);
 					setIsLoading(false);
 				}, 500);
+				console.log(uniqueCheckboxProps);
 			})
 			.catch((e) => e);
 	}, []);
@@ -88,6 +108,34 @@ function ProductsPage() {
 								)}
 							/>
 						</div>
+						<p>Body type</p>
+						{uniqueCheckboxProps.bodies.map((body, i) => (
+							<div key={i}>
+								<input type='checkbox' />
+								<label>{body}</label>
+							</div>
+						))}
+						<p>Exterior color</p>
+						{uniqueCheckboxProps.colors.map((body, i) => (
+							<div key={i}>
+								<input type='checkbox' />
+								<label>{body}</label>
+							</div>
+						))}
+						<p>Transmission</p>
+						{uniqueCheckboxProps.transmissions.map((body, i) => (
+							<div key={i}>
+								<input type='checkbox' />
+								<label>{body}</label>
+							</div>
+						))}
+						<p>Fuel type</p>
+						{uniqueCheckboxProps.fuelTypes.map((body, i) => (
+							<div key={i}>
+								<input type='checkbox' />
+								<label>{body}</label>
+							</div>
+						))}
 						<button type='submit' className='apply-filter'>
 							Apply filter
 						</button>
@@ -101,7 +149,7 @@ function ProductsPage() {
 				</div>
 				<div className='products'>
 					{isLoading
-						? arr.map((_, i) => (
+						? arr.map((_: any, i: number) => (
 								<div key={i} className='product'>
 									<SkeletonProductCard />
 								</div>

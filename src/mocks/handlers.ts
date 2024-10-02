@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
 export const handlers = [
-    http.get('https://www.everyapi.com/cars', () => {
+    http.get('/cars', () => {
         return HttpResponse.json(
             [
                 {
@@ -13,7 +13,7 @@ export const handlers = [
                         body: 'sedan',
                         VIN: 'WBX13EF07S5060074',
                         exteriorColor: 'Alpine White',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Convenience Package'
@@ -27,7 +27,7 @@ export const handlers = [
                         body: 'sedan',
                         VIN: 'WBX13EF07S5060074',
                         exteriorColor: 'Arctic Race Blue',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Premium Package'
@@ -41,7 +41,7 @@ export const handlers = [
                         body: 'coupe',
                         VIN: '3MF13DM08R8E89910',
                         exteriorColor: 'Brooklyn Gray',
-                        driveLine: 'RWD',
+                        transmission: 'RWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Convenience Package'
@@ -55,7 +55,7 @@ export const handlers = [
                         body: 'coupe',
                         VIN: 'WBA83DA05SCT21921',
                         exteriorColor: 'Portimao Blue',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Premium Package'
@@ -69,7 +69,7 @@ export const handlers = [
                         body: 'gran coupe',
                         VIN: 'WBAGV8C06SCT31299',
                         exteriorColor: 'Alpine White',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Convenience Package'
@@ -83,7 +83,7 @@ export const handlers = [
                         body: 'SUV',
                         VIN: 'WBX57DP06RN307982',
                         exteriorColor: 'Mineral White',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Premium Package'
@@ -97,7 +97,7 @@ export const handlers = [
                         body: 'SUV',
                         VIN: '5UX33EU02S9X56342',
                         exteriorColor: 'Sapphire Black',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Convenience Package'
@@ -111,7 +111,7 @@ export const handlers = [
                         body: 'sedan',
                         VIN: 'WBX13EF07S5060074',
                         exteriorColor: 'Alpine White',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Premium Package'
@@ -125,7 +125,7 @@ export const handlers = [
                         body: 'SUV',
                         VIN: 'WBX13EF07S5060074',
                         exteriorColor: 'Isle of Man Green',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Convenience Package'
@@ -139,7 +139,7 @@ export const handlers = [
                         body: 'sedan',
                         VIN: '5UX23EM08S9X57829',
                         exteriorColor: 'Black Sapphire',
-                        driveLine: 'AWD',
+                        transmission: 'AWD',
                         fuelType: 'gasoline',
                     },
                     package: 'Premium Package'

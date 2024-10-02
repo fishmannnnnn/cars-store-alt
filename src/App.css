@@ -34,6 +34,10 @@ body{
   border-radius: 4px;
   padding: 6px 8px;
 }
+form p{
+  font-weight: 600;
+  font-size: 18px;
+}
 .apply-filter{
   padding: .5rem;
   background: white;
