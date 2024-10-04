@@ -62,7 +62,7 @@ export const handlers = [
                 },
                 {
                     image: 'https://pictures.dealer.com/l/leithbmwraleighbmw/0332/849975396a8dbe06fe3b559e4cff129cx.jpg?impolicy=resize&w=1024',
-                    model: 'M850i xDrive',
+                    model: 'M850 xDrive',
                     price: 112015,
                     characteristics: {
                         year: '2025',
@@ -98,7 +98,7 @@ export const handlers = [
                         VIN: '5UX33EU02S9X56342',
                         exteriorColor: 'Sapphire Black',
                         transmission: 'AWD',
-                        fuelType: 'gasoline',
+                        fuelType: 'diesel',
                     },
                     package: 'Convenience Package'
                 },
@@ -112,7 +112,7 @@ export const handlers = [
                         VIN: 'WBX13EF07S5060074',
                         exteriorColor: 'Alpine White',
                         transmission: 'AWD',
-                        fuelType: 'gasoline',
+                        fuelType: 'diesel',
                     },
                     package: 'Premium Package'
                 },
@@ -136,11 +136,11 @@ export const handlers = [
                     price: 98845,
                     characteristics: {
                         year: '2024',
-                        body: 'sedan',
+                        body: 'SUV',
                         VIN: '5UX23EM08S9X57829',
                         exteriorColor: 'Black Sapphire',
                         transmission: 'AWD',
-                        fuelType: 'gasoline',
+                        fuelType: 'diesel',
                     },
                     package: 'Premium Package'
                 },

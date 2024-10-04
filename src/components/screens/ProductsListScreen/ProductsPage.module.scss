@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	gap: 20px;
+    padding: 20px;
+	justify-content: space-between;
+	max-width: 1160px;
+	margin: 0 auto;
+}
+.products {
+	display: flex;
+	flex-direction: column;
+	max-width: 760px;
+	width: 100%;
+	padding: 0 16px;
+	background: rgba(235, 235, 235, 0.4);
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	color: rgb(31, 31, 31);
+	border-radius: 6px;
+}
+.product {
+	border-bottom: 1px solid rgba(128, 128, 128, 0.6);
+	&:last-of-type {
+		border-bottom: none;
+	}
+}
