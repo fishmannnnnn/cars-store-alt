@@ -76,6 +76,7 @@ function ProductsPage() {
 					<Filter
 						uniqueCheckboxProps={uniqueCheckboxProps}
 						resetFilter={resetFilter}
+						setFilter={setFilter}
 					/>
 				<div className={styles.products}>
 					{isLoading

@@ -1,82 +1,53 @@
+import { Checkbox } from '@radix-ui/react-checkbox';
 import styles from './Filter.module.scss';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import CheckboxInput from '../CheckboxInput/CheckboxInput';
 
 interface UniqueCheckboxProps {
-    [key: string]: string[];
+	[key: string]: string[];
 }
 interface Props {
 	uniqueCheckboxProps: UniqueCheckboxProps;
-    resetFilter: Function;
+	resetFilter: Function;
+	setFilter: Function;
 }
-const Filter = ({ uniqueCheckboxProps, resetFilter }: Props) => {
+
+const Filter = ({ uniqueCheckboxProps, resetFilter, setFilter }: Props) => {
 	// const { handleSubmit, control, register } = useForm<Filter>();
 	// const onSubmit: SubmitHandler<Filter> = (data) => {
 	// 	setFilter({ minPrice: data.minPrice, maxPrice: data.maxPrice });
 	// 	console.log(data);
 	// };
+	// 
 	return (
 		<div className={styles.filterContainer}>
-			<form className={styles.form}
-			// onSubmit={ handleSubmit(onSubmit)}
-			>
+			<form className={styles.form}>
 				<p>Price range</p>
-				<div className={styles.price}>
-					{/* <Controller
-						name='minPrice'
-						// control={control}
-						rules={{ required: true }}
-						render={({ field }) => (
-							<input
-								{...field}
-								// {...register('minPrice', {
-								// 	pattern: /^[1-9][0-9]*$/,
-								// })}
-								className='price-filter'
-							/>
-						)}
-					/>
-					-
-					<Controller
-						name='maxPrice'
-						// control={control}
-						rules={{ required: true }}
-						render={({ field }) => (
-							<input
-								{...field}
-								// {...register('maxPrice', {
-								// 	pattern: /^[1-9][0-9]*$/,
-								// })}
-								className='price-filter'
-							/>
-						)}
-					/> */}
-				</div>
+				<div className={styles.price}></div>
 				<p>Body type</p>
-				{uniqueCheckboxProps.bodies.map((body, i) => (
+				{uniqueCheckboxProps.bodies.map((item, i) => (
 					<div key={i}>
-						<input type='checkbox' />
-						<label>{body}</label>
+						<CheckboxInput id={`body${i}`}>{item}</CheckboxInput>
 					</div>
 				))}
 				<p>Exterior color</p>
-				{uniqueCheckboxProps.colors.map((body, i) => (
+				{uniqueCheckboxProps.colors.map((item, i) => (
 					<div key={i}>
-						<input type='checkbox' />
-						<label>{body}</label>
+						<CheckboxInput id={`color${i}`}>{item}</CheckboxInput>
 					</div>
 				))}
 				<p>Transmission</p>
-				{uniqueCheckboxProps.transmissions.map((body, i) => (
+				{uniqueCheckboxProps.transmissions.map((item, i) => (
 					<div key={i}>
-						<input type='checkbox' />
-						<label>{body}</label>
+						<CheckboxInput id={`transmission${i}`}>
+							{item}
+						</CheckboxInput>
 					</div>
 				))}
 				<p>Fuel type</p>
-				{uniqueCheckboxProps.fuelTypes.map((body, i) => (
+				{uniqueCheckboxProps.fuelTypes.map((item, i) => (
 					<div key={i}>
-						<input type='checkbox' />
-						<label>{body}</label>
+						<CheckboxInput id={`fuel${i}`}>{item}</CheckboxInput>
 					</div>
 				))}
 				<button type='submit' className={styles.filterBtn}>
@@ -86,6 +57,7 @@ const Filter = ({ uniqueCheckboxProps, resetFilter }: Props) => {
 
 			<button className={styles.filterBtn} onClick={() => resetFilter()}>
 				Reset filter
+				{}
 			</button>
 		</div>
 	);
