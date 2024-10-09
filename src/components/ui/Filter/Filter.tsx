@@ -1,6 +1,4 @@
-import { Checkbox } from '@radix-ui/react-checkbox';
 import styles from './Filter.module.scss';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import CheckboxInput from '../CheckboxInput/CheckboxInput';
 
 interface UniqueCheckboxProps {
@@ -13,12 +11,7 @@ interface Props {
 }
 
 const Filter = ({ uniqueCheckboxProps, resetFilter, setFilter }: Props) => {
-	// const { handleSubmit, control, register } = useForm<Filter>();
-	// const onSubmit: SubmitHandler<Filter> = (data) => {
-	// 	setFilter({ minPrice: data.minPrice, maxPrice: data.maxPrice });
-	// 	console.log(data);
-	// };
-	// 
+	
 	return (
 		<div className={styles.filterContainer}>
 			<form className={styles.form}>
