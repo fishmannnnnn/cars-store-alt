@@ -68,9 +68,9 @@ function ProductsPage() {
             .then(res => res.data)
             .then(data => {
                 setCars(data);
+                setIsLoading(false);
                 setTimeout(() => {
                     console.log(data);
-                    setIsLoading(false);
                 }, 500);
                 console.log(uniqueCheckboxProps);
             })
