@@ -1,6 +1,5 @@
 import styles from './Filter.module.scss';
 import CheckboxInput from '../CheckboxInput/CheckboxInput';
-import { IFilter } from '@/components/screens/ProductsListScreen/ProductsPage';
 
 interface UniqueCheckboxProps {
     [key: string]: string[];
@@ -8,7 +7,7 @@ interface UniqueCheckboxProps {
 interface Props {
     uniqueCheckboxProps: UniqueCheckboxProps;
     resetFilter: () => void;
-    setFilter: (arg: IFilter) => void;
+    setFilter: (arg: object) => void;
 }
 
 const Filter = ({ uniqueCheckboxProps, resetFilter, setFilter }: Props) => {
@@ -22,7 +21,7 @@ const Filter = ({ uniqueCheckboxProps, resetFilter, setFilter }: Props) => {
                 <p>Body type</p>
                 {uniqueCheckboxProps.bodies.map((item, i) => (
                     <div key={i}>
-                        <CheckboxInput id={`body${i}`} onChange={(val) => setFilter(val)}>{item}</CheckboxInput>
+                        <CheckboxInput id={`body${i}`} onChange={() => setFilter({item})}>{item}</CheckboxInput>
                     </div>
                 ))}
                 <p>Exterior color</p>
@@ -45,14 +44,16 @@ const Filter = ({ uniqueCheckboxProps, resetFilter, setFilter }: Props) => {
                         <CheckboxInput id={`fuel${i}`}>{item}</CheckboxInput>
                     </div>
                 ))}
-                <button type="submit" className={styles.filterBtn}>
+                <button type="submit" className={styles.filterBtn} onClick={(e) => e.preventDefault()}>
                     Apply filter
                 </button>
             </form>
 
-            <button className={styles.filterBtn} onClick={() => resetFilter()}>
+            <button className={styles.filterBtn} onClick={(e) => {
+                e.preventDefault();
+                resetFilter()
+                }}>
                 Reset filter
-                {}
             </button>
         </div>
     );

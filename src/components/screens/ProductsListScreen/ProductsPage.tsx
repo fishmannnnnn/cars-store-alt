@@ -74,13 +74,16 @@ function ProductsPage() {
             })
             .catch(e => e);
     }, []);
+    useEffect(() => {
+        console.log(filter)
+    }, [filter]);
     return (
         <SkeletonTheme>
             <div className={styles.container}>
                 <Filter
                     uniqueCheckboxProps={uniqueCheckboxProps}
                     resetFilter={resetFilter}
-                    setFilter={(filter: Filter) => setFilter(...prev,filter)}
+                    setFilter={(filter) => setFilter(prev => ({...prev, filter}))}
                 />
                 <div className={styles.products}>
                     {isLoading

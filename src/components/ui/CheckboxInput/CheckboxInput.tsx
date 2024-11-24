@@ -14,9 +14,6 @@ const CheckboxInput = ({
 }) => {
     const [checked, setChecked] = useState(false);
 
-    useEffect(() => {
-        console.log(checked);
-    }, [checked]);
     useMemo(() => onChange && onChange(checked), [checked]);
     
     return (
